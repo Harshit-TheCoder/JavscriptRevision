@@ -4,10 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    .highlight {
+        background-color: yellow;
+        font-weight: bold;
+    }
+    </style>
 </head>
 <body>
     <button id="clickBtn">Click Me</button>
+
+    <div id="main">Hello</div>
+
+    <p class="text">Paragraph</p>
+
+    <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    </ul>
+
+    <div id="box">Old text</div>
+
+    <ul id="list"></ul>
+
+    <button id="btn">Click Me</button>
+    <p id="msg"></p>
+
+    <button onclick="changeColor()">Change Color</button>
+    <p id="para">Watch my color!</p>
+
+    <p id="text">Toggle Highlight</p>
+    <button onclick="toggle()">Toggle</button>
+
+    <input type="text" id="name" placeholder="Enter name">
+    <button onclick="submitName()">Submit</button>
+    <p id="output"></p>
+
+    <ul>
+        <li class="item">Apple</li>
+        <li class="item">Banana</li>
+        <li class="item">Cherry</li>
+    </ul>
+
+    <ul id="menu">
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+
+
     <script src = "index.js" charset="UTF-8"></script>
     <script src = "calculator.js" charset="UTF-8" type="module"></script>
+    <script>
+        document.getElementById("main").style.color = "red";
+        document.querySelector(".text").style.fontWeight = "bold";
+        let listitems = document.querySelectorAll("ul li");
+        listitems.forEach(li => li.style.color = "blue");
+    </script>
+    <script>
+        document.getElementById("box").innerText = "New Text!";
+        document.getElementById("box").innerHTML = "<b>Bold Text!</b>";
+    </script>
+    <script>
+        const li = document.createElement("li");
+        li.textContent = "Dynamically Added";
+        document.getElementById("list").appendChild(li);
+
+        setTimeout(()=>{
+            document.getElementById("list").removeChild(li);
+        }, 2000);
+    </script>
+    <script>
+        document.getElementById("btn").addEventListener("click", function(){
+            document.getElementById("msg").innerText = "Button clicked";
+        });
+    </script>
+    <script>
+        function changeColor(){
+            document.getElementById("para").style.color = "green";
+            document.getElementById("para").style.fontFamily = "Times New Roman";
+        }
+    </script>
+    <script>
+        function toggle(){
+            document.getElementById("text").classList.toggle("highlight");
+        }
+    </script>
+    <script>
+        function submitName(){
+            const name = document.getElementById("name").value;
+            document.getElementById("output").innerText = name;
+        }
+    </script>
+    <script>
+        let list = document.querySelectorAll(".item");
+        list.forEach(li => li.style.color = "red");
+    </script>
+    <script>
+        document.getElementById("menu").addEventListener("click", function(e){
+            if(e.target.name == "LI"){
+                alert("button clicked: " + e.target.innerText);
+            }
+        });
+    </script>
 </body>
 </html>
